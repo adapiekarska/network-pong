@@ -3,4 +3,4 @@ Package containing whole client program, including game logic, graphical interfa
 utilities, as well as connection establishing and managing.
 """
 
-from client.client_main import Client
+from game_client.app.client import Client

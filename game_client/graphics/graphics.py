@@ -10,6 +10,9 @@ class GraphicsManager(object):
     Class handling graphical interface.
     """
     def __init__(self):
+        """
+        Constructor of the GraphicsManager class.
+        """
         # initialize pygame module
         pygame.init()
 

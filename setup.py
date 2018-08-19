@@ -11,8 +11,8 @@ setup(
     install_requires=['pygame'],
     entry_points={
         "console_scripts": [
-            "play=client:main",
-            "server=server:main",
+            "play=pong_client:main",
+            "pong_server=pong_server:main",
         ],
     },
     licence="MIT",
