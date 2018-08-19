@@ -20,7 +20,7 @@ The project is continuously built with every commit on the Travis CI.
 
 * [PyGame](https://www.pygame.org/) - Graphical Library used
 * [TravisCI](https://www.pygame.org/) - Continuous Integration tool
-* [Sphinx](http://www.sphinx-doc.org/) - Documentation generation
+* [Sphinx](http://www.sphinx-doc.org/) - Documentation generating
 
 ## Authors
 
