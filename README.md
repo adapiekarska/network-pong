@@ -1,5 +1,7 @@
 # Network Pong Game
 
+** This project is currently under developement. As for now, there is a working client-server infrastructure. The whole actual game functionality needs to be added.**
+
 Simple network pong game. Consists of two packages, client and server. Developed mainly for fun and practice. Currently still in the development stage.
 
 ## Documentation
