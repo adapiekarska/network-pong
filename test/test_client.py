@@ -1,6 +1,6 @@
 import pytest
 
-from game_client import Client
+from src.game_client import Client
 
 # TODO how to test both client and server with their blocking methods in the same script?
 

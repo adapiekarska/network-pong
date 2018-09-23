@@ -12,4 +12,4 @@ install:
 
 script:
   - pytest
-  - cd docs; sphinx-build -nWT -b dummy . _build/html
+  - sphinx-apidoc -f -o docs/source ./src ; cd docs ; make html

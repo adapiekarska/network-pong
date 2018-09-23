@@ -1,7 +1,7 @@
-server
-======
+src
+===
 
 .. toctree::
    :maxdepth: 4
 
-   server
+   src

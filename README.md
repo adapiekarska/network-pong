@@ -6,7 +6,7 @@ Simple network pong game. Consists of two packages, client and server. Developed
 
 ## Documentation
 
-See the [docs/build/html](docs/build/html) directory for full documentation. 
+See [read the docs page](https://readthedocs.org/projects/network-pong/) for full documentation. 
 
 ## Getting started
 
@@ -22,7 +22,7 @@ The project is continuously built with every commit on the Travis CI. For curren
 
 * [PyGame](https://www.pygame.org/) - Graphical Library used
 * [TravisCI](https://www.pygame.org/) - Continuous Integration tool
-* [Sphinx](http://www.sphinx-doc.org/) - Documentation generating
+* [Sphinx](http://www.sphinx-doc.org/) - Documentation generation
 
 ## Authors
 
