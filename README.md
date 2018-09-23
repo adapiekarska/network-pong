@@ -14,7 +14,7 @@ To install, you will need to have Python.
 
 ## Continuous integration
 
-The project is continuously built with every commit on the Travis CI. 
+The project is continuously built with every commit on the Travis CI. For current build results, see https://travis-ci.com/adapiekarska/network-pong/
 
 ## Built With
 

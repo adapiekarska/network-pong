@@ -6,9 +6,7 @@ import pygame
 
 
 class GraphicsManager(object):
-    """
-    Class handling graphical interface.
-    """
+    """Class handling graphical interface of the program."""
     def __init__(self):
         """
         Constructor of the GraphicsManager class.

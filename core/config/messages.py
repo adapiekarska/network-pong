@@ -8,7 +8,7 @@ message from the private dictionary given its name.
 from core.utils.exc import UnrecognizedVariableError
 
 
-# Dictionary of available messages. Every message should be as short
+# Dictionary of all available messages. Every message should be as short
 # and descriptive as possible. Storing messages in the dictionary
 # provides easy and safe way of getting wanted message by simply
 # calling get(name) function from this module with a name parameter,
@@ -24,16 +24,23 @@ _messages = {
 
 
 def get(name):
-    """
+    """Get message by its name.
+
     Get raw byte string message given its name.
-    :param name: name of the message. Must be a valid key contained in
-    a private dictionary.
-    :type name: str
-    :return: value stored under the given key in the _messages dictionary
-    :rtype byte str
-    :raises core.utils.exc.UnrecognizedVariableError: if the name of the
-    message is not contained in the private messages dictionary
+
+    Args:
+        name (str): name of the message. Must be a valid key contained in
+            a private dictionary.
+
+    Returns:
+        A byte string value stored under the given key in the _messages
+        dictionary
+
+    Raises:
+        core.utils.exc.UnrecognizedVariableError: if the name of the
+        message is not contained in the private messages dictionary
     """
+
     if name in _messages:
         return _messages[name]
     else:

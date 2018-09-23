@@ -12,11 +12,6 @@ class Session(object):
     """
 
     def __init__(self, c1, c2):
-        """
-        Session class constructor.
-        :param tuple (string address, int port) c1: client 1
-        :param tuple (string address, int port) c2: client 2
-        """
         self._c1 = c1
         self._c2 = c2
 

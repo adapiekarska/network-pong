@@ -15,7 +15,8 @@ from server.client.client import Clients, Client
 
 
 class Server(object):
-    """
+    """Class representing the server.
+
     Class responsible for listening and managing clients. It handles their first
     connections, establishes and runs session for each pair and keeps track of
     whether any of the clients is still connected and active. In other words, the
@@ -24,10 +25,6 @@ class Server(object):
     """
 
     def __init__(self):
-        """
-        Constructor of the Server class.
-        """
-
         # initial global config setting
         server_data.set("SERVER_ADDRESS", "127.0.0.1")
         server_data.set("SERVER_PORT", conf.SERVER_PORT)
@@ -51,7 +48,8 @@ class Server(object):
         self._sock.close()
 
     def start(self):
-        """
+        """Start the server.
+
         Run the pong_server's main loop. There are two main tasks that the server does
         during this function. First, it listens for incomming messages, then handles them
         accordingly to their contents, and after that, it checks whether any of the
@@ -62,16 +60,13 @@ class Server(object):
             self._inspect_clients()
 
     def stop(self):
-        """
-        Stops the execution of a server by raising SystemExit.
-        :return:
+        """Stops the execution of a server by raising SystemExit.
         """
         self._clean_up()
         raise SystemExit
 
     def _listen(self):
-        """
-        Listen for incoming messages and handle them properly according to their purpose.
+        """Listen for incoming messages and handle them properly according to their purpose.
         """
 
         print([c.ep for c in self._clients])
@@ -85,7 +80,7 @@ class Server(object):
         prev = self._clients.find_by_ep(new_client_ep)
         if prev:
             if data == messages.get("MSG_IDLE"):
-                prev.last_idle = time.time()
+                prev._last_idle = time.time()
         else:
             if data == messages.get("MSG_CON_REQ"):
                 new_client = Client(new_client_ep)
@@ -93,7 +88,8 @@ class Server(object):
                 self._handle_new_client(new_client)
 
     def _inspect_clients(self):
-        """
+        """Check current state for all connected clients.
+
         Run through the list of currently connected clients and check whether they have been
         active or not. If not, remove them from the list of currently connected clients.
         """
@@ -106,19 +102,25 @@ class Server(object):
                     self._remove_client(c)
 
     def _server_full(self):
-        """
+        """Check if the server is full.
+
         Check whether the maximum capacity of the server has been reached, i.e. any new
         client cannot be accepted. Maximum number of concurrent connections can be specified
         in server_config.py file
-        :return: True if pong_server is full, False otherwise
+
+        Returns:
+            True if pong_server is full, False otherwise
         """
         return len(self._connections) >= server_data.get("MAX_CONNECTIONS")
 
     def _remove_client(self, client):
-        """
+        """Remove client.
+
         Remove client from the list of currently connected clients and from the list of
         active connections.
-        :param server.client.Client client: client to remove from the server
+
+        Args:
+            client: client to remove from the server
         """
         for connection in self._connections:
             print(type(connection))
@@ -128,11 +130,14 @@ class Server(object):
         self._clients.remove(client)
 
     def _handle_new_client(self, new_client):
+        """Handle new client.
+
+        Handle new client according to their current status and message that they send.
+
+        Args:
+            new_client: newly connected client
         """
-        Handle new client.
-        :param new_client: newly connected client
-        :type new_client: server.client.client.Client
-        """
+
         if not self._server_full():
             self._clients.append(new_client)
 
@@ -158,18 +163,20 @@ class Server(object):
             send(self._sock, "MSG_SERVER_FULL", new_client.ep)
 
     def _arrange_for_session(self, c1, c2):
-        """
+        """Arrange the new session.
+
         Prepare for a new game to be started. Perform something like three-way handshake,
         i.e. first the server sends the message to clients notifying them that they
         are in, then both clients have to respond with ACK message, and if that happens,
         the server sends the confirmation message to both clients. After that, the
         connection between two clients is considered established.
-        :param c1: first client
-        :param c2: second client
-        :type c1: server.client.client.Client
-        :type c2: server.client.client.Client
-        :return: True if the preparations succeeded, False otherwise
-        :rtype: bool
+
+        Args:
+            c1: first client
+            c2: second client
+
+        Returns:
+            True if the preparations succeeded, False otherwise
         """
 
         send(self._sock, "MSG_IN", c1.ep, c2.ep)

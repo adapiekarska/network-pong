@@ -10,22 +10,27 @@ from core.utils import exc
 
 
 class Client(object):
-    """
-    Main class for the pong_client program.
+    """Class representing the client.
+
+    This class handles all managers' initialization and startup.
     """
 
     def __init__(self):
         self._sock = None
 
     def start(self, graphics=True):
-        """
-        Starts the pong_client program. Instantiates connection with server and starts
+        """Start the client.
+
+        Starts the client program. Instantiates connection with server and starts
         a graphic manager. Keeps the server connection throughout whole duration of the
         session.
-        :param graphics: indicates whether the client should run with graphical user
-        interface or only as a console application (useful for tests).
-        :type graphics: bool
-        :raises SystemExit: if connection to server could not be established.
+
+        Args:
+            graphics: boolean value that indicates whether the client should run with
+            graphical user interface or only as a console application (useful for tests).
+
+        Raises:
+            SystemExit: if connection to server could not be established.
         """
 
         # Connect to the server.
@@ -60,6 +65,6 @@ class Client(object):
 
     def _clean_up(self):
         """
-        Perform clean up.
+        Performs clean up.
         """
         self._sock.close()

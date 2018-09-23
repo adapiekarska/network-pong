@@ -26,10 +26,13 @@ _writable = [
 def get(name):
     """
     Get data from private dictionary given its name.
-    :param name: key from the private dictionary under which the wanted value
+
+    Args:
+        name: key from the private dictionary under which the wanted value
     is stored
-    :type name: str
-    :return: value stored in a private dictionary under the given key
+
+    Return:
+        value stored in a private dictionary under the given key
     """
     return _server_data[name]
 
@@ -37,11 +40,15 @@ def get(name):
 def set(name, value):
     """
     Set specific server configuration parameter to a given value.
-    :param name: the name of the parameter (key from _server_data dictionary)
-    :param value: value to be set
-    :raises exc.VariableNotSettableError: if the parameter that you want to set
+
+    Args:
+        name: the name of the parameter (key from _server_data dictionary)
+        value: value to be set
+
+    Raises:
+        exc.VariableNotSettableError: if the parameter that you want to set
     was not configured to be writable.
-    :raises exc.UnrecognizedVariableError: if the name is not contained in the
+        exc.UnrecognizedVariableError: if the name is not contained in the
     private dictionary
     """
     if name in _server_data:

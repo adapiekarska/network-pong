@@ -14,14 +14,19 @@ from game_client import conf as CONFIG
 
 
 class ConnectionEstablisher(object):
-    """
-    Class implementing connection establishment logic.
+    """Class implementing connection establishment logic.
+
+    The class is responsible for establishing the connection to the server,
+    and the session with another remote machine via the server.
     """
 
     def __init__(self):
-        """
+        """Constructor.
+
         Performs basic initialization of variables and opens a UDP socket.
-        :raises SystemExit: if the UDP socket could not be opened
+
+        Raises:
+            SystemExit: if the UDP socket could not be opened.
         """
 
         self._address = "127.0.0.1"
@@ -40,20 +45,24 @@ class ConnectionEstablisher(object):
 
     @property
     def sock(self):
-        """
-        Getter method for a socket variable.
-        :return: socket object.
-        """
         return self._sock
 
     def establish(self):
-        """
+        """Establish connection to the server and to the other remote player.
+
         Tries to connect to the server by sending a request and waiting for a response.
-        :return: True if connection was successfully established, False otherwise.
-        :raises core.utils.exc.ServerUnreachableError: if there was no response from the
-        server or the server was full.
-        :raises core.utils.exc.ProtocolError: if the message received from the server
-        was not recognized as the valid message.
+        If the server does not respond immediately, it means that there is no waiting
+        client on the server.
+        If the server responds in a desirable way, the three-way handshake is performed.
+
+        Returns:
+            True if connection was successfully established, False otherwise.
+
+        Raises:
+            core.utils.exc.ServerUnreachableError: if there was no response from the
+            server or the server was full.
+            core.utils.exc.ProtocolError: if the message received from the server
+            was not recognized as the valid message.
         """
 
         send(self._sock, "MSG_CON_REQ", self._server_ep)
