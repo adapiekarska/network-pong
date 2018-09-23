@@ -10,3 +10,4 @@ already established connection throughout the duration of the entire session.
 """
 
 from src.game_client.connection.establisher import ConnectionEstablisher
+from src.game_client.connection.manager import ConnectionManager

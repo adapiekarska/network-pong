@@ -2,8 +2,8 @@
 Module containing main class for the client program.
 """
 
-from src.game_client import ConnectionEstablisher
-from src.game_client import ConnectionManager
+from src.game_client.connection import ConnectionEstablisher
+from src.game_client.connection import ConnectionManager
 from src.game_client.graphics import GraphicsManager
 
 from src.core.utils import exc

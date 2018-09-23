@@ -2,7 +2,7 @@
 Module containing entry point for the server program.
 """
 
-from src.server import Server
+from src.server.app import Server
 
 
 def main():
