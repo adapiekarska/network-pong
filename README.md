@@ -13,6 +13,11 @@ See [read the docs page](https://readthedocs.org/projects/network-pong/) for ful
 The project consists of two packages. Either you can install one, or both of them.
 To install, you will need to have Python. 
 
+## Usage
+
+## Tests
+
+Test files are in the [test](test) directory.
 
 ## Continuous integration
 
